@@ -1,0 +1,98 @@
+
+.manager-page {
+  padding: 20px;
+}
+
+.manager-header {
+  background-color: #2b2f33;
+  color: #fbfbfb;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 2px solid #444;
+}
+
+.manager-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.manager-nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.manager-nav ul li a {
+  color: #fbfbfb;
+  text-decoration: none;
+}
+
+.manager-nav .logout-button {
+  background-color: #d9534f;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.manager-nav .logout-button:hover {
+  background-color: #c9302c;
+}
+
+.manager-content {
+  padding: 20px;
+  background-color: #1d2124;
+  border-radius: 8px;
+}
+
+.manager-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  color: #fbfbfb;
+}
+
+.manager-content table th, .manager-content table td {
+  border: 1px solid #444;
+  padding: 12px;
+  text-align: left;
+}
+
+.manager-content table th {
+  background-color: #333;
+}
+
+.manager-content table tr:nth-child(even) {
+  background-color: #2b2f33;
+}
+
+.manager-content table tr:hover {
+  background-color: #3c4043;
+}
+
+.select-user-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.select-user-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.select-user-button:active {
+  background-color: #004085;
+  transform: scale(0.98);
+}
+
+.select-user-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}

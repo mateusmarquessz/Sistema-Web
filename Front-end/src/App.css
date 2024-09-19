@@ -1,0 +1,19 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #161A1E;
+  color: #fbfbfb;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}

@@ -1,0 +1,157 @@
+.manage-users-page {
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+  background-color: #161A1E;
+  color: #fbfbfb;
+}
+
+.manage-users-h2{
+  display: flex;
+  justify-content: center;
+}
+
+.manage-users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.manage-users-header h1 {
+  margin: 0;
+  color: #fbfbfb;
+}
+
+.manage-users-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.manage-users-nav ul li {
+  margin-right: 15px;
+}
+
+.manage-users-nav ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.manage-users-nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.user-form {
+  background-color: #1f242a;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.user-form h2 {
+  margin-bottom: 15px;
+  color: #fbfbfb;
+}
+
+.user-form .form-group {
+  margin-bottom: 10px;
+}
+
+.user-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #fbfbfb;
+}
+
+.user-form .form-group input,
+.user-form .form-group select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #2c3137;
+  color: #fbfbfb;
+}
+
+.user-form .form-group button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #fbfbfb;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.user-form .form-group button:hover {
+  background: linear-gradient(45deg, #0056b3, #007bff);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.user-form .form-group button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #6c757d;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group input[type="file"] {
+  display: none;
+}
+
+.file-upload-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.file-upload-btn:hover {
+  background-color: #0056b3;
+}
+
+.file-upload-label {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}

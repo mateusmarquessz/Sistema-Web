@@ -1,0 +1,135 @@
+.user-page {
+  padding: 20px;
+}
+
+.conclude-button{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #fbfbfb;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+
+.conclude-button:hover{
+  background: linear-gradient(45deg, #0056b3, #007bff);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.conclude-button:active{
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.user-header {
+  background-color: #2b2f33;
+  color: #fbfbfb;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 2px solid #444;
+}
+
+.user-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.user-nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.user-nav ul li a {
+  color: #fbfbfb;
+  text-decoration: none;
+}
+
+.user-nav .logout-button {
+  background-color: #d9534f;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.user-nav .logout-button:hover {
+  background-color: #c9302c;
+}
+
+.user-content {
+  padding: 20px;
+  background-color: #1d2124;
+  border-radius: 8px;
+}
+
+.user-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  color: #fbfbfb;
+}
+
+.user-content table th, .user-content table td {
+  border: 1px solid #444;
+  padding: 12px;
+  text-align: left;
+}
+
+.user-content table th {
+  background-color: #333;
+}
+
+.user-content table tr:nth-child(even) {
+  background-color: #2b2f33;
+}
+
+.user-content table tr:hover {
+  background-color: #3c4043;
+}
+
+.select-user-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.select-user-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.select-user-button:active {
+  background-color: #004085;
+  transform: scale(0.98);
+}
+
+.select-user-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
