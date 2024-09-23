@@ -49,7 +49,6 @@ public class User {
 
     @Lob
     @Basic(fetch = FetchType.EAGER)
-    @Column(name = "image", columnDefinition = "BYTEA")
     private byte[] image;
 
     // Getters e Setters

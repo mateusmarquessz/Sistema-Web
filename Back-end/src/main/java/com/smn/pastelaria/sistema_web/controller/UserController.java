@@ -33,7 +33,7 @@ public class UserController {
 
     @PostMapping
     @Secured("ROLE_GESTOR")
-    public ResponseEntity<User> createUser(@RequestParam("fullName") String fullname,
+    public ResponseEntity<User> createUser(@RequestParam("fullName") String fullName,
                                            @RequestParam("birthDate") LocalDate birthDate,
                                            @RequestParam("phone") String phone,
                                            @RequestParam("mobile") String mobile,
@@ -44,7 +44,7 @@ public class UserController {
                                            @RequestParam("image") MultipartFile file) {
         try {
             User user = new User();
-            user.setFullName(fullname);
+            user.setFullName(fullName);
             user.setBirthDate(birthDate);
             user.setPhone(phone);
             user.setMobile(mobile);
