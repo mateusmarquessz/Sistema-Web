@@ -26,10 +26,11 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
 
-
+    //Contruct para o usuario padrao
     public void registerFirstManager(UserDTO userDTO) {
     }
 
+    //Registra Usuario
     @Secured("ROLE_GESTOR") // Apenas usuários com a role GESTOR podem registrar outros usuários
     public User registerUser(User user, MultipartFile file) throws IOException {
         if(file !=null && !file.isEmpty()){
@@ -38,17 +39,20 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    //Pega dados do Usuario pelo Email
     public User getUserByEmail(String email) {
         User user = userRepository.findByEmail(email).orElse(null);
         return userRepository.findByEmail(email)
                 .orElse(null);
     }
 
+    //Pega dados do Usuario pelo ID
     public User getUserById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("Usuário não encontrado com ID: " + id));
     }
 
+    //Pega Foto do Usuario
     public byte[] getUserPhotoById(Long id) throws ResourceNotFoundException {
         // Verifica se o usuário existe no banco de dados
         Optional<User> userOptional = userRepository.findById(id);
@@ -63,7 +67,20 @@ public class UserService {
             throw new ResourceNotFoundException("Usuário não encontrado com id: " + id);
         }
     }
+
+    //Lista Usuario
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+
+    //Deletar Usuario
+    @Secured("ROLE_GESTOR")
+    public boolean deleteUserById(Long id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

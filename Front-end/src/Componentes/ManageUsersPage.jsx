@@ -11,7 +11,7 @@ const ManageUsersPage = () => {
     mobile: '',
     email: '',
     address: '',
-    photo: null,
+    // photo: null, // Comentando a parte da foto
     password: '',
     role: 'USUARIO'
   });
@@ -30,17 +30,24 @@ const ManageUsersPage = () => {
       console.log('Arquivo selecionado:', file);
       
       // Exemplo: Atualizando o estado com o arquivo selecionado
-      setUserData({ ...userData, photo: URL.createObjectURL(file) });
+      // setUserData({ ...userData, photo: URL.createObjectURL(file) }); // Comentando esta linha
     }
   };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    
+    // Adicione os dados do usuário ao FormData
+    for (const key in userData) {
+      formData.append(key, userData[key]);
+    }
+  
     try {
-      await axios.post('http://localhost:8080/api/users', userData, {
+      await axios.post('http://localhost:8080/api/users', formData, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'multipart/form-data'
         }
       });
       alert('Usuário criado com sucesso!');
@@ -49,7 +56,7 @@ const ManageUsersPage = () => {
       alert('Erro ao criar usuário.');
     }
   };
-
+  
   // Função para voltar à página inicial
   const handleBack = () => {
     navigate('/'); // Navega para a página inicial
@@ -135,10 +142,12 @@ const ManageUsersPage = () => {
             <option value="GESTOR">Gestor</option>
           </select>
         </div>
+        {/* Comentando a parte da imagem */}
+        {/* 
         <div className="form-group">
-        <label htmlFor="photo-upload" className="file-upload-btn">
-          Escolher Foto
-        </label>
+          <label htmlFor="photo-upload" className="file-upload-btn">
+            Escolher Foto
+          </label>
           <input
             id="photo-upload"
             type="file"
@@ -147,6 +156,7 @@ const ManageUsersPage = () => {
             onChange={handleFileChange}
           />
         </div>
+        */}
         <div className="form-group">
           <button type="submit">Cadastrar Usuário</button>
         </div>

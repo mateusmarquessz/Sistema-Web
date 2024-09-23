@@ -41,7 +41,7 @@ public class UserController {
                                            @RequestParam("email") String email,
                                            @RequestParam("password") String password,
                                            @RequestParam("role") String role,
-                                           @RequestParam("image") MultipartFile file) {
+                                           @RequestParam(value = "image", required = false) MultipartFile file) { // image é opcional por enquanto
         try {
             User user = new User();
             user.setFullName(fullName);
@@ -52,13 +52,22 @@ public class UserController {
             user.setEmail(email);
             user.setPassword(passwordEncoder.encode(password));
             user.setRole(Role.valueOf(role));
-            User createUser = userService.registerUser(user,file);
+
+            // Imagem opicional por enquanto.
+        /*
+        if (file != null && !file.isEmpty()) {
+            user.setImage(file.getBytes());
+        }
+        */
+
+            User createUser = userService.registerUser(user, file); // Chame o serviço sem a imagem
             return new ResponseEntity<>(createUser, HttpStatus.CREATED);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
     // Método para converter byte[] para String base64
     private String convertToBase64String(byte[] imageBytes) {
@@ -93,6 +102,18 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/{id}")
+    @Secured("ROLE_GESTOR")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        boolean isDeleted = userService.deleteUserById(id);
+        if (isDeleted) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
 

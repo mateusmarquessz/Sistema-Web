@@ -47,8 +47,8 @@ public class User {
     @Transient
     private String imageUrl;
 
+    @Basic(fetch = FetchType.LAZY)
     @Lob
-    @Basic(fetch = FetchType.EAGER)
     private byte[] image;
 
     // Getters e Setters
