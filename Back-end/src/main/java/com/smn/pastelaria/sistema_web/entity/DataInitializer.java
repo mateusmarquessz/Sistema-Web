@@ -29,9 +29,9 @@ public class DataInitializer {
                 userDTO.setAddress("Endereço Padrão");
                 userDTO.setEmail("opotunidades@smn.com.br");
                 userDTO.setPassword("teste123");
-                userDTO.setRole(Role.GESTOR); // Define o papel como GESTOR
+                userDTO.setRole(Role.GESTOR);
 
-                userService.registerUser(userDTO);
+                userService.registerFirstManager(userDTO);
             }
         };
     }
