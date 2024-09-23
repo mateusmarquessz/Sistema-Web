@@ -76,18 +76,41 @@ const UserPage = () => {
       if (!token) {
         throw new Error('No token found');
       }
-
+  
       await axios.patch(`http://localhost:8080/api/tasks/${taskId}/status`, null, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
       });
-      
-      setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+  
+      // Rebuscar as tarefas após concluir a tarefa
+      await fetchTasks();
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to complete task');
     }
   };
+  
+  // Função para buscar as tarefas
+  const fetchTasks = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found');
+      }
+  
+      const tasksResponse = await axios.get(`http://localhost:8080/api/tasks/assigned/${user.id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+  
+      setTasks(tasksResponse.data);
+      setFilteredTasks(tasksResponse.data);
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to fetch tasks');
+    }
+  };
+  
 
   return (
     <div className="user-page">
