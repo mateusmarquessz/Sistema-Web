@@ -133,3 +133,30 @@
   object-fit: cover;
   margin-right: 20px;
 }
+
+.select-user-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  margin-left: 5px;
+  padding: 7px 7px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.select-user-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.select-user-button:active {
+  background-color: #004085;
+  transform: scale(0.98);
+}
+
+.select-user-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}

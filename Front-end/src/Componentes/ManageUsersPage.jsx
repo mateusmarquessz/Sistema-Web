@@ -11,7 +11,7 @@ const ManageUsersPage = () => {
     mobile: '',
     email: '',
     address: '',
-    photo: '',
+    photo: null,
     password: '',
     role: 'USUARIO'
   });

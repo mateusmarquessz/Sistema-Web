@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './css/UserPage.css';
+import userIcon from './assets/img/usericon.png';
 
 const UserPage = () => {
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
+  const [filter, setFilter] = useState('todos');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -31,6 +34,10 @@ const UserPage = () => {
         });
 
         setTasks(tasksResponse.data);
+        setFilteredTasks(tasksResponse.data);
+        
+        // Log para verificar as tarefas recebidas
+        console.log("Tarefas recebidas:", tasksResponse.data);
       } catch (err) {
         setError(err.response?.data?.message || 'Failed to fetch user data');
       } finally {
@@ -41,9 +48,26 @@ const UserPage = () => {
     fetchUser();
   }, []);
 
+  useEffect(() => {
+    const filtered = filter === 'todos'
+      ? tasks
+      : tasks.filter(task => task.status === filter); 
+  
+    console.log("Tarefas filtradas:", filtered);
+    console.log("Tarefas recebidas:", tasks);
+    console.log("Status das tarefas:", tasks.map(task => task.status));
+
+    setFilteredTasks(filtered);
+  }, [filter, tasks]);
+
   const onLogout = () => {
-    localStorage.removeItem('token');
-    window.location.href = '/login';
+    if (window.confirm('Tem certeza que deseja sair?')) {
+      localStorage.removeItem('token');
+      setUser(null);
+      setTasks([]);
+      setFilteredTasks([]);
+      window.location.href = '/login';
+    }
   };
 
   const completeTask = async (taskId) => {
@@ -58,7 +82,8 @@ const UserPage = () => {
           'Authorization': `Bearer ${token}`,
         },
       });
-      setTasks(tasks.filter(task => task.id !== taskId));
+      
+      setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to complete task');
     }
@@ -68,7 +93,11 @@ const UserPage = () => {
     <div className="user-page">
       <header className="user-header">
         <div className="user-profile">
-          <img src={user?.imageUrl || '/default-avatar.png'} alt="Profile" className="user-avatar" />
+          <img
+            src={user?.imageUrl || userIcon}
+            alt="Profile"
+            className="user-avatar"
+          />
           <h1>Bem-vindo, {user ? user.fullName : 'Carregando...'}</h1>
         </div>
         <nav className="user-nav">
@@ -78,17 +107,26 @@ const UserPage = () => {
       <main className="user-content">
         <p>Aqui você pode gerenciar suas tarefas.</p>
         
+        <div className="filter-section">
+            <label>
+              Filtrar por:
+              <select className="select-user-button" value={filter} onChange={(e) => setFilter(e.target.value)}>
+                <option value="todos">Todos</option>
+                <option value="CONCLUIDA">Concluídas</option>
+                <option value="PENDENTE">Pendentes</option>
+              </select>
+            </label>
+          </div>
         <div className="tasks-section">
           <h2>Tarefas</h2>
           {loading ? (
             <p>Carregando...</p>
           ) : error ? (
             <p>{error}</p>
-          ) : tasks.length > 0 ? (
+          ) : filteredTasks.length > 0 ? (
             <table>
               <thead>
                 <tr>
-                  <th>ID</th>
                   <th>Mensagem</th>
                   <th>Data de Vencimento</th>
                   <th>Status</th>
@@ -96,14 +134,13 @@ const UserPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {tasks.map(task => (
+                {filteredTasks.map(task => (
                   <tr key={task.id}>
-                    <td>{task.id}</td>
                     <td>{task.message}</td>
                     <td>{task.dueDate}</td>
                     <td>{task.status}</td>
                     <td>
-                      {task.status !== 'Concluída' && (
+                      {task.status !== 'CONCLUIDA' && (
                         <button className='conclude-button' onClick={() => completeTask(task.id)}>Concluir</button>
                       )}
                     </td>
