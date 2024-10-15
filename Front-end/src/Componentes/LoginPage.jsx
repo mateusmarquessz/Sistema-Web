@@ -13,10 +13,15 @@ const LoginPage = ({ onLoginSuccess }) => {
     e.preventDefault();
   
     try {
-      const response = await axios.post("http://localhost:8080/auth/login", {
+      //const response = await axios.post("http://localhost:8080/auth/login", {
+        //email,
+        //password,
+      //});
+      const response = await axios.post("https://sistema-web-d4c5.onrender.com/auth/login", {
         email,
         password,
       });
+      
   
       localStorage.setItem("token", response.data.token);
       onLoginSuccess(response.data.role, response.data.token);
