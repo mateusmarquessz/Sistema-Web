@@ -81,7 +81,7 @@ const ManagerPage = ({ onLogout }) => {
           </select>
           <table>
             <thead>
-              <tr>
+              <tr className="table-tr">
                 <th>ID</th>
                 <th>Mensagem</th>
                 <th>Data de Vencimento</th>
@@ -90,7 +90,7 @@ const ManagerPage = ({ onLogout }) => {
             </thead>
             <tbody>
               {tasks.map(task => (
-                <tr key={task.id}>
+                <tr className="table-tr" key={task.id}>
                   <td>{task.id}</td>
                   <td>{task.message}</td>
                   <td>{task.dueDate}</td>

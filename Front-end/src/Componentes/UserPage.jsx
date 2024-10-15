@@ -36,7 +36,6 @@ const UserPage = () => {
         setTasks(tasksResponse.data);
         setFilteredTasks(tasksResponse.data);
         
-        // Log para verificar as tarefas recebidas
         console.log("Tarefas recebidas:", tasksResponse.data);
       } catch (err) {
         setError(err.response?.data?.message || 'Failed to fetch user data');
@@ -83,14 +82,12 @@ const UserPage = () => {
         },
       });
   
-      // Rebuscar as tarefas após concluir a tarefa
       await fetchTasks();
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to complete task');
     }
   };
   
-  // Função para buscar as tarefas
   const fetchTasks = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -111,7 +108,6 @@ const UserPage = () => {
     }
   };
   
-
   return (
     <div className="user-page">
       <header className="user-header">
@@ -131,15 +127,16 @@ const UserPage = () => {
         <p>Aqui você pode gerenciar suas tarefas.</p>
         
         <div className="filter-section">
-            <label>
-              Filtrar por:
-              <select className="select-user-button" value={filter} onChange={(e) => setFilter(e.target.value)}>
-                <option value="todos">Todos</option>
-                <option value="CONCLUIDA">Concluídas</option>
-                <option value="PENDENTE">Pendentes</option>
-              </select>
-            </label>
-          </div>
+          <label>
+            Filtrar por:
+            <select className="select-user-button" value={filter} onChange={(e) => setFilter(e.target.value)}>
+              <option value="todos">Todos</option>
+              <option value="CONCLUIDA">Concluídas</option>
+              <option value="PENDENTE">Pendentes</option>
+            </select>
+          </label>
+        </div>
+        
         <div className="tasks-section">
           <h2>Tarefas</h2>
           {loading ? (
@@ -147,30 +144,32 @@ const UserPage = () => {
           ) : error ? (
             <p>{error}</p>
           ) : filteredTasks.length > 0 ? (
-            <table>
-              <thead>
-                <tr>
-                  <th>Mensagem</th>
-                  <th>Data de Vencimento</th>
-                  <th>Status</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredTasks.map(task => (
-                  <tr key={task.id}>
-                    <td>{task.message}</td>
-                    <td>{task.dueDate}</td>
-                    <td>{task.status}</td>
-                    <td>
-                      {task.status !== 'CONCLUIDA' && (
-                        <button className='conclude-button' onClick={() => completeTask(task.id)}>Concluir</button>
-                      )}
-                    </td>
+            <div className="table-responsive"> {/* Contêiner para rolagem */}
+              <table>
+                <thead>
+                  <tr className="table-tr">
+                    <th>Mensagem</th>
+                    <th>Data de Vencimento</th>
+                    <th>Status</th>
+                    <th>Ações</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {filteredTasks.map(task => (
+                    <tr className="table-tr" key={task.id}>
+                      <td>{task.message}</td>
+                      <td>{task.dueDate}</td>
+                      <td>{task.status}</td>
+                      <td>
+                        {task.status !== 'CONCLUIDA' && (
+                          <button className='conclude-button' onClick={() => completeTask(task.id)}>Concluir</button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           ) : (
             <p>Nenhuma tarefa encontrada.</p>
           )}
