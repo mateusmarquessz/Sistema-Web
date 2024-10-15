@@ -21,11 +21,13 @@ const LoginPage = ({ onLoginSuccess }) => {
         email,
         password,
       });
-      
-  
+
       localStorage.setItem("token", response.data.token);
       onLoginSuccess(response.data.role, response.data.token);
       navigate('/');
+
+
+
     } catch (error) {
       if (error.response) {
         // O servidor respondeu com um status diferente de 2xx
