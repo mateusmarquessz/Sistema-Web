@@ -20,14 +20,14 @@ public class DataInitializer {
     public CommandLineRunner loadData() {
         return args -> {
             // Verifica se o usuário padrão já existe
-            if (userService.getUserByEmail("opotunidades@smn.com.br") == null) {
+            if (userService.getUserByEmail("gestorpadrao@gmail.com.br") == null) {
                 UserDTO userDTO = new UserDTO();
                 userDTO.setFullName("Gestor Padrão");
                 userDTO.setBirthDate(LocalDate.now());
                 userDTO.setPhone("000000000");
                 userDTO.setMobile("000000000");
                 userDTO.setAddress("Endereço Padrão");
-                userDTO.setEmail("opotunidades@smn.com.br");
+                userDTO.setEmail("gestorpadrao@gmail.com.br");
                 userDTO.setPassword("teste123");
                 userDTO.setRole(Role.GESTOR);
 
