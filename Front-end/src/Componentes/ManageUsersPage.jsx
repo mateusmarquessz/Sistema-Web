@@ -44,7 +44,7 @@ const ManageUsersPage = () => {
     }
   
     try {
-      await axios.post('http://localhost:8080/api/users', formData, {
+      await axios.post('https://sistema-web-d4c5.onrender.com/api/users', formData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
           'Content-Type': 'multipart/form-data'

@@ -14,7 +14,7 @@ const ManagerPage = ({ onLogout }) => {
         // Buscar tarefas do gestor
         const managerId = localStorage.getItem('userId');
         if (managerId) {
-          const tasksResponse = await axios.get(`http://localhost:8080/api/tasks/manager/${managerId}`, {
+          const tasksResponse = await axios.get(`https://sistema-web-d4c5.onrender.com/api/tasks/manager/${managerId}`, {
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -23,7 +23,7 @@ const ManagerPage = ({ onLogout }) => {
         }
 
         // Buscar usuários
-        const usersResponse = await axios.get('http://localhost:8080/api/users/listar', {
+        const usersResponse = await axios.get('https://sistema-web-d4c5.onrender.com/api/users/listar', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
@@ -42,7 +42,7 @@ const ManagerPage = ({ onLogout }) => {
     const userId = e.target.value;
     setSelectedUserId(userId);
     try {
-      const response = await axios.get(`http://localhost:8080/api/tasks/assigned/${userId}`, {
+      const response = await axios.get(`https://sistema-web-d4c5.onrender.com/api/tasks/assigned/${userId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

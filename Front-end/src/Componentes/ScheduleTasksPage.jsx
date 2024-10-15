@@ -20,7 +20,7 @@ const ScheduleTasksPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/users/listar', {
+        const response = await axios.get('https://sistema-web-d4c5.onrender.com/api/users/listar', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
@@ -48,7 +48,7 @@ const ScheduleTasksPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/tasks', taskData, {
+      await axios.post('https://sistema-web-d4c5.onrender.com/api/tasks', taskData, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

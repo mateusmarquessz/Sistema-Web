@@ -19,7 +19,7 @@ const UserPage = () => {
           throw new Error('No token found');
         }
 
-        const userResponse = await axios.get('http://localhost:8080/api/users/me', {
+        const userResponse = await axios.get('https://sistema-web-d4c5.onrender.com/api/users/me', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -27,7 +27,7 @@ const UserPage = () => {
 
         setUser(userResponse.data);
 
-        const tasksResponse = await axios.get(`http://localhost:8080/api/tasks/assigned/${userResponse.data.id}`, {
+        const tasksResponse = await axios.get(`https://sistema-web-d4c5.onrender.com/api/tasks/assigned/${userResponse.data.id}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -77,7 +77,7 @@ const UserPage = () => {
         throw new Error('No token found');
       }
   
-      await axios.patch(`http://localhost:8080/api/tasks/${taskId}/status`, null, {
+      await axios.patch(`https://sistema-web-d4c5.onrender.com/api/tasks/${taskId}/status`, null, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -98,7 +98,7 @@ const UserPage = () => {
         throw new Error('No token found');
       }
   
-      const tasksResponse = await axios.get(`http://localhost:8080/api/tasks/assigned/${user.id}`, {
+      const tasksResponse = await axios.get(`https://sistema-web-d4c5.onrender.com/api/tasks/assigned/${user.id}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
