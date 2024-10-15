@@ -26,9 +26,26 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
 
-    //Contruct para o usuario padrao
     public void registerFirstManager(UserDTO userDTO) {
+        // Converta o UserDTO para a entidade User
+        User user = new User();
+        user.setFullName(userDTO.getFullName());
+        user.setBirthDate(userDTO.getBirthDate());
+        user.setPhone(userDTO.getPhone());
+        user.setMobile(userDTO.getMobile());
+        user.setAddress(userDTO.getAddress());
+        user.setEmail(userDTO.getEmail());
+
+        // Encode a senha antes de salvar
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+
+        // Defina a role GESTOR
+        user.setRole(userDTO.getRole());
+
+        // Salve o usuário no banco de dados
+        userRepository.save(user);
     }
+
 
     //Registra Usuario
     @Secured("ROLE_GESTOR") // Apenas usuários com a role GESTOR podem registrar outros usuários
