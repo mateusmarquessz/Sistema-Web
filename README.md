@@ -1,20 +1,52 @@
 # Sistema de Gerenciamento de Tarefas
 
-Este repositório contém um sistema de gerenciamento de tarefas, desenvolvido em back-end com Spring e front-end em React. O sistema permite criar, atribuir e gerenciar tarefas de forma eficiente e pode ser executado localmente.
+Este repositório contém um sistema completo de gerenciamento de tarefas, desenvolvido com **Spring Boot** no back-end e **React** no front-end. O sistema foi criado com o objetivo de facilitar a criação, atribuição e gestão de tarefas de forma eficiente, permitindo a execução tanto localmente quanto em um ambiente de produção.
 
-## Funcionalidades
+## Funcionalidades principais:
+- **Gerenciamento de Usuários**: Somente usuários com a função de **Gestor** podem criar novos usuários no sistema.
+- **Criação e Atribuição de Tarefas**: Apenas o Gestor pode criar e atribuir tarefas aos usuários.
+- **Visualização de Tarefas**: Usuários comuns podem visualizar apenas suas próprias tarefas, enquanto o Gestor tem uma visão completa de todas as tarefas no sistema.
+- **Autenticação e Controle de Acesso**: O sistema utiliza autenticação de usuário e permissões baseadas em funções (roles), garantindo que apenas o Gestor possa gerenciar usuários e tarefas.
 
-- **Gerenciamento de Tarefas**: Crie, atualize e visualize tarefas.
-- **Diferentes Tipos de Usuários**: Suporte para usuários comuns e gestores, incluindo um gestor padrão.
-- **Notificações**: Lembretes por e-mail para tarefas com prazos se aproximando.
+## Usuário Padrão:
+Ao iniciar o sistema pela primeira vez, um **usuário padrão** é criado automaticamente. Esse usuário tem permissões de **Gestor** e pode realizar todas as operações administrativas no sistema, como a criação e atribuição de tarefas e a gestão de outros usuários.
 
-## Requisitos
+### Detalhes do Usuário Padrão:
+- **Email**: gestorpadrao@gmail.com.br
+- **Senha**: teste123
 
-- **Java** (para o back-end)
-- **Node.js e npm** (para o front-end)
-- **Navegador compatível** (Google Chrome, Firefox, etc.)
+## Funções e Permissões:
+- **Gestor**: Pode visualizar todas as tarefas, criar novos usuários, atribuir tarefas e realizar a gestão completa do sistema.
+- **Usuário Comum**: Pode visualizar e gerenciar apenas suas próprias tarefas.
 
-## Acesso ao Sistema
+## Instruções de Uso:
+1. **Login com o Gestor Padrão**:
+   - Use o email `gestorpadrao@gmail.com.br` e a senha `teste123` para fazer login como o gestor.
+2. **Criação de Novos Usuários**:
+   - Após o login, o Gestor pode criar novos usuários e definir suas permissões (roles).
+3. **Atribuição de Tarefas**:
+   - O Gestor pode criar tarefas e atribuí-las aos usuários registrados.
+4. **Visualização de Tarefas**:
+   - O Gestor pode visualizar todas as tarefas, enquanto os usuários comuns só podem visualizar as tarefas atribuídas a eles.
+
+## Tecnologias Utilizadas:
+- **Back-end**: Spring Boot
+- **Front-end**: React
+- **Autenticação**: Spring Security com controle de roles
+- **Banco de Dados**: Postgresql
+
+## Como Executar o Sistema Localmente:
+1. Clone este repositório.
+2. Configure o banco de dados no arquivo de propriedades (`application.properties`).
+3. Compile e execute o back-end com o Spring Boot.
+4. Inicie o front-end com React.
+5. Acesse a aplicação no navegador e faça login com as credenciais do **Gestor Padrão**.
+
+
+
+### Online via Vercel
+
+https://sistema-web-khaki.vercel.app/
 
 ### Download
 
